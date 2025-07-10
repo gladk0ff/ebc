@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { searchProducts, type Product } from "../data/mockData";
 
