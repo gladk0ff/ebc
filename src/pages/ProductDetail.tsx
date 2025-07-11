@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import Header from "../components/Header/Header";
+// import Header from "./ContentLayout/Header/Header";
 import Barcode from "../components/Barcode";
 import { getProductById } from "../data/mockData";
 
@@ -11,7 +11,7 @@ const ProductDetail = () => {
 	if (!product) {
 		return (
 			<div>
-				<Header title="Товар не найден" showBack={true} />
+				{/* <Header title="Товар не найден" showBack={true} /> */}
 				<div className="page-content">
 					<div className="empty-state">
 						<div className="empty-state-icon">❌</div>
@@ -25,7 +25,7 @@ const ProductDetail = () => {
 
 	return (
 		<div>
-			<Header title={product.name} showBack={true} />
+			{/* <Header title={product.name} showBack={true} /> */}
 			<div className="page-content">
 				<div className="product-detail">
 					<div className="product-detail-content">

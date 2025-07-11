@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import Header from "../components/Header/Header";
-import LoadingSpinner from "../components/LoadingSpinner";
-import { getProductsByCategory, getCategoryBySlug, type Product } from "../data/mockData";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import { getProductsByCategory, getCategoryBySlug, type Product } from "../../data/mockData";
+
+import "./CategoryProducts.css";
 
 const CategoryProducts = () => {
 	const { slug } = useParams<{ slug: string }>();
@@ -34,7 +35,6 @@ const CategoryProducts = () => {
 	if (isLoading) {
 		return (
 			<div>
-				<Header title="Загрузка..." showBack={true} />
 				<div className="page-content">
 					<LoadingSpinner message="Загрузка товаров..." />
 				</div>
@@ -44,9 +44,7 @@ const CategoryProducts = () => {
 
 	return (
 		<div>
-			<Header title={category?.name || "Категория"} showBack={true} />
 			<div className="page-content">
-				{/* Filters */}
 				<div className="filters">
 					<button
 						className={`filter-tag ${activeFilter === "all" ? "active" : ""}`}
@@ -65,7 +63,6 @@ const CategoryProducts = () => {
 					))}
 				</div>
 
-				{/* Products Grid */}
 				<div className="products-grid">
 					{filteredProducts.map((product) => (
 						<div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>

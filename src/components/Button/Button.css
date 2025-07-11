@@ -1,9 +1,9 @@
 .button {
 	padding: 21px 24px;
-	border-radius: 20px;
-	border: 2px solid gray;
+	border-radius: var(--border-radius);
+	border: 2px solid transparent;
 	cursor: pointer;
-	cursor: pointer;
+	font-size: 24px;
 	transition: background-color 0.2s;
 }
 
@@ -14,4 +14,13 @@
 .button--primary {
 	border-color: var(--primary);
 	background: var(--primary);
+}
+
+.button--outline {
+	border-color: var(--gray-light);
+	background: var(--white);
+}
+
+.button--large {
+	height: 72px;
 }

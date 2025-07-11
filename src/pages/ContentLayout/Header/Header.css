@@ -1,12 +1,12 @@
 /* Header styles */
 .header {
-	padding: 15px 20px;
+	padding: 16px 56px;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	position: sticky;
 	top: 0;
 	z-index: 100;
+	background-color: var(--gray-light);
 }
 
 .header-left {
@@ -34,6 +34,7 @@
 }
 
 .store-name {
-	font-size: 14px;
-	color: #666;
+	font-size: 16px;
+	font-weight: 500px;
+	color: var(--gray);
 }
