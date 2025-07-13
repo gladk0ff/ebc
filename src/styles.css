@@ -11,6 +11,9 @@
 	--white: #ffffff;
 
 	--border-radius: 20px;
+	--border-width: 2px;
+
+	--border: var(--border-width) solid var(--gray-light);
 }
 
 * {

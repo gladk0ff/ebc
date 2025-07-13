@@ -1,7 +1,7 @@
 import { ContentLayout } from "./ContentLayout/ContentLayout";
 import Home from "./Home/Home";
 import Search from "./Search/Search";
-import Categories from "./Categories";
+import Categories from "./Categories/Categories";
 import CategoryProducts from "./CategoryProducts/CategoryProducts";
 import ProductDetail from "./ProductDetail";
 

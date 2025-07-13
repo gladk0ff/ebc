@@ -1,9 +1,11 @@
 import { useLocation, useMatches, useNavigate } from "react-router";
 
 import HomeIcon from "assets/home.svg";
+import BackIcon from "assets/arrow.svg";
 import { Button } from "components/Button/Button";
-import "./Header.css";
 import { PATH } from "pages/config";
+
+import "./Header.css";
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -47,7 +49,11 @@ const Header = () => {
 						Категории
 					</Button>
 				)}
-				{isShowBack && <Button onClick={handleBack}>← Назад</Button>}
+				{isShowBack && (
+					<Button onClick={handleBack} className="header__back-button">
+						<BackIcon /> <span>Назад</span>
+					</Button>
+				)}
 				<h1 className="header-title">{pageTitle}</h1>
 			</div>
 			<span className="store-name">ГМ №1 Калуга</span>

@@ -5,6 +5,7 @@ interface IProps {
 	type?: "primary" | "outline";
 	onClick?: () => void;
 	size?: "medium" | "large";
+	className?: string;
 }
 
 export const Button: React.FC<React.PropsWithChildren<IProps>> = ({
@@ -12,15 +13,20 @@ export const Button: React.FC<React.PropsWithChildren<IProps>> = ({
 	size = "large",
 	onClick,
 	children,
+	className,
 }) => {
 	return (
 		<button
-			className={cn("button", {
-				["button--primary"]: type === "primary",
-				["button--outline"]: type === "outline",
-				["button--large"]: size === "large",
-				["button--medium"]: size === "medium",
-			})}
+			className={cn(
+				"button",
+				{
+					["button--primary"]: type === "primary",
+					["button--outline"]: type === "outline",
+					["button--large"]: size === "large",
+					["button--medium"]: size === "medium",
+				},
+				className || ""
+			)}
 			onClick={onClick}
 		>
 			{children}

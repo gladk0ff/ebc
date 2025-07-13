@@ -33,51 +33,43 @@ const CategoryProducts = () => {
 	};
 
 	if (isLoading) {
-		return (
-			<div>
-				<div className="page-content">
-					<LoadingSpinner message="Загрузка товаров..." />
-				</div>
-			</div>
-		);
+		return <LoadingSpinner message="Загрузка товаров..." />;
 	}
 
 	return (
-		<div>
-			<div className="page-content">
-				<div className="filters">
+		<>
+			<div className="filters">
+				<button
+					className={`filter-tag ${activeFilter === "all" ? "active" : ""}`}
+					onClick={() => setActiveFilter("all")}
+				>
+					Все
+				</button>
+				{availableTags.map((tag) => (
 					<button
-						className={`filter-tag ${activeFilter === "all" ? "active" : ""}`}
-						onClick={() => setActiveFilter("all")}
+						key={tag}
+						className={`filter-tag ${activeFilter === tag ? "active" : ""}`}
+						onClick={() => setActiveFilter(tag)}
 					>
-						Все
+						{tag}
 					</button>
-					{availableTags.map((tag) => (
-						<button
-							key={tag}
-							className={`filter-tag ${activeFilter === tag ? "active" : ""}`}
-							onClick={() => setActiveFilter(tag)}
-						>
-							{tag}
-						</button>
-					))}
-				</div>
-
-				<div className="products-grid">
-					{filteredProducts.map((product) => (
-						<div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>
-							{!product.available && <div className="unavailable-badge">Нет в наличии</div>}
-							<div className="product-image">
-								{product.image ? <img src={product.image} alt={product.name} /> : <div>📦</div>}
-							</div>
-							<div className={`product-name ${!product.available ? "product-unavailable" : ""}`}>
-								{product.name}
-							</div>
-						</div>
-					))}
-				</div>
+				))}
 			</div>
-		</div>
+
+			<div className="products-grid">
+				{filteredProducts.map((product) => (
+					<div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>
+						<div className="product-image">
+							{product.image ? <img src={product.image} alt={product.name} /> : <div>📦</div>}
+							{!product.available && <div className="unavailable-badge">Нет в наличии</div>}
+						</div>
+						<div className={`product-name ${!product.available ? "product-unavailable" : ""}`}>
+							{product.name}
+						</div>
+					</div>
+				))}
+			</div>
+		</>
 	);
 };
 

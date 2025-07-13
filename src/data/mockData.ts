@@ -2,7 +2,7 @@ export interface Category {
 	id: number;
 	name: string;
 	slug: string;
-	icon: string;
+	imgSrc: string;
 }
 
 export interface Product {
@@ -17,12 +17,12 @@ export interface Product {
 }
 
 export const categories: Category[] = [
-	{ id: 1, name: "Овощи", slug: "vegetables", icon: "🥕" },
-	{ id: 2, name: "Фрукты", slug: "fruits", icon: "🍎" },
-	{ id: 3, name: "Название в две строки", slug: "longname", icon: "🏷️" },
-	{ id: 4, name: "Выпечка", slug: "bakery", icon: "🥖" },
-	{ id: 5, name: "Конфеты", slug: "sweets", icon: "🍭" },
-	{ id: 6, name: "Длинное название в три и более ст...", slug: "longlongname", icon: "🍬" },
+	{ id: 1, name: "Овощи", slug: "vegetables", imgSrc: "" },
+	{ id: 2, name: "Фрукты", slug: "fruits", imgSrc: "" },
+	{ id: 3, name: "Название в две строки", slug: "longname", imgSrc: "" },
+	{ id: 4, name: "Выпечка", slug: "bakery", imgSrc: "" },
+	{ id: 5, name: "Конфеты", slug: "sweets", imgSrc: "" },
+	{ id: 6, name: "Длинное название в три и более строк", slug: "longlongname", imgSrc: "" },
 ];
 
 export const products: Product[] = [

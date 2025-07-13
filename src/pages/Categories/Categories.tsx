@@ -1,5 +1,7 @@
 import { Link } from "react-router";
-import { categories } from "../data/mockData";
+import { categories } from "../../data/mockData";
+
+import "./Categories.css";
 
 const Categories = () => {
 	return (
@@ -13,8 +15,8 @@ const Categories = () => {
 						title: category.name,
 					}}
 				>
-					<div className="category-icon">{category.icon}</div>
-					<div className="category-name">{category.name}</div>
+					<img className="category-img" src={category.imgSrc || "src/assets/test_Category.png"} />
+					<span className="category-name">{category.name}</span>
 				</Link>
 			))}
 		</div>
