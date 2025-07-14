@@ -1,6 +1,9 @@
 import { Link } from "react-router";
 import { categories } from "../../data/mockData";
 
+// TODO: добавяляем для тетисрования прототипа
+import "src/assets/test_Category.png";
+
 import "./Categories.css";
 
 const Categories = () => {

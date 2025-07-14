@@ -35,6 +35,8 @@ const CategoryProducts = () => {
 		navigate(`/products/${productId}`);
 	};
 
+	const hasProducts = !!products.length;
+
 	return (
 		<div className={cn("category-products", isLoading && "category-products--loading")}>
 			{isLoading ? (
@@ -59,26 +61,32 @@ const CategoryProducts = () => {
 						))}
 					</div>
 
-					<div className="products-grid">
-						{filteredProducts.map((product) => (
-							<div
-								key={product.id}
-								className="product-card"
-								onClick={() => handleProductClick(product.id)}
-							>
-								<div className="product-image">
-									{product.image ? (
-										<img src={product.image} alt={product.name} />
-									) : (
-										<NotFoundImageIcon />
-									)}
-									{!product.available && <span className="unavailable-badge">Нет в наличии</span>}
+					<div className={cn("category-products__grid", !hasProducts && "category-products__grid--empty")}>
+						{hasProducts ? (
+							filteredProducts.map((product) => (
+								<div
+									key={product.id}
+									className="product-card"
+									onClick={() => handleProductClick(product.id)}
+								>
+									<div className="product-card__image">
+										{product.image ? (
+											<img src={product.image} alt={product.name} />
+										) : (
+											<NotFoundImageIcon />
+										)}
+										{!product.available && <span className="unavailable-badge">Нет в наличии</span>}
+									</div>
+									<span
+										className={`product-card__name ${!product.available ? "product-unavailable" : ""}`}
+									>
+										{product.name}
+									</span>
 								</div>
-								<span className={`product-name ${!product.available ? "product-unavailable" : ""}`}>
-									{product.name}
-								</span>
-							</div>
-						))}
+							))
+						) : (
+							<p className="category-products__grid-empty-title">Товары не найдены</p>
+						)}
 					</div>
 				</>
 			)}
