@@ -1,19 +1,21 @@
 :root {
+	--white: #ffffff;
+	--black: #333333;
+	--gray-lightest: #f4f4f4;
+	--gray-lighter: #e8e8e8;
+	--gray-light: #c4c4c4;
+	--gray: #a4a4a4;
+	--gray-dark: #8f8f8f;
+
 	--primary: #f98e04;
 
-	--primary-text: #333333;
-	--secondary-text: #8f8f8f;
-
-	--gray-lighter: #f4f4f4;
-	--gray-light: #e8e8e8;
-	--gray: #a4a4a4;
-
-	--white: #ffffff;
+	--primary-text: var(--black);
+	--secondary-text: var(--gray-dark);
 
 	--border-radius: 20px;
 	--border-width: 2px;
 
-	--border: var(--border-width) solid var(--gray-light);
+	--border: var(--border-width) solid var(--gray-lighter);
 }
 
 * {
@@ -25,7 +27,7 @@
 
 body {
 	font-family: "Roboto", sans-serif;
-	background-color: var(--gray-light);
+	background-color: var(--gray-lighter);
 	color: #333;
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
@@ -42,4 +44,12 @@ body {
 
 h1 {
 	font-size: 48px;
+}
+
+/* PWA styles */
+@media (display-mode: standalone) {
+	body {
+		-webkit-user-select: none;
+		-webkit-touch-callout: none;
+	}
 }

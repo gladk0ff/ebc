@@ -3,7 +3,7 @@ import Home from "./Home/Home";
 import Search from "./Search/Search";
 import Categories from "./Categories/Categories";
 import CategoryProducts from "./CategoryProducts/CategoryProducts";
-import ProductDetail from "./ProductDetail";
+import ProductDetail from "./ProductDetail/ProductDetail";
 
 export const PATH = {
 	base: "/",

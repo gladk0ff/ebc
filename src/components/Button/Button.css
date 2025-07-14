@@ -17,7 +17,7 @@
 }
 
 .button--outline {
-	border-color: var(--gray-light);
+	border-color: var(--gray-lighter);
 	background: var(--white);
 }
 

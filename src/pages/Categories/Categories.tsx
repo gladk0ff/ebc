@@ -16,7 +16,9 @@ const Categories = () => {
 					}}
 				>
 					<img className="category-img" src={category.imgSrc || "src/assets/test_Category.png"} />
-					<span className="category-name">{category.name}</span>
+					<div className="category-name__wrapper">
+						<span className="category-name">{category.name}</span>
+					</div>
 				</Link>
 			))}
 		</div>

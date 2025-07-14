@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/Spinner/Spinner";
 import { searchProducts, type Product } from "../../data/mockData";
 
 import "./Search.css";
@@ -14,6 +14,7 @@ const Search = () => {
 	useEffect(() => {
 		if (!query.trim()) {
 			setResults([]);
+			setIsLoading(false);
 			return;
 		}
 
@@ -27,6 +28,11 @@ const Search = () => {
 
 		return () => clearTimeout(timeoutId);
 	}, [query]);
+
+	const startSearch = (str: string) => {
+		setIsLoading(true);
+		setQuery(str);
+	};
 
 	const handleProductClick = (productId: number) => {
 		navigate(`/products/${productId}`);
@@ -57,7 +63,7 @@ const Search = () => {
 				className="search-input"
 				placeholder="PLU или наименование"
 				value={query}
-				onChange={(e) => setQuery(e.target.value)}
+				onChange={(e) => startSearch(e.target.value)}
 				autoFocus
 			/>
 			{isLoading && <LoadingSpinner message="Поиск товаров..." />}

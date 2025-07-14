@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import cn from "classnames";
+
+import NotFoundImageIcon from "assets/image-not-found.svg";
+import LoadingSpinner from "components/Spinner/Spinner";
 import { getProductsByCategory, getCategoryBySlug, type Product } from "../../data/mockData";
 
 import "./CategoryProducts.css";
@@ -32,44 +35,54 @@ const CategoryProducts = () => {
 		navigate(`/products/${productId}`);
 	};
 
-	if (isLoading) {
-		return <LoadingSpinner message="Загрузка товаров..." />;
-	}
-
 	return (
-		<>
-			<div className="filters">
-				<button
-					className={`filter-tag ${activeFilter === "all" ? "active" : ""}`}
-					onClick={() => setActiveFilter("all")}
-				>
-					Все
-				</button>
-				{availableTags.map((tag) => (
-					<button
-						key={tag}
-						className={`filter-tag ${activeFilter === tag ? "active" : ""}`}
-						onClick={() => setActiveFilter(tag)}
-					>
-						{tag}
-					</button>
-				))}
-			</div>
-
-			<div className="products-grid">
-				{filteredProducts.map((product) => (
-					<div key={product.id} className="product-card" onClick={() => handleProductClick(product.id)}>
-						<div className="product-image">
-							{product.image ? <img src={product.image} alt={product.name} /> : <div>📦</div>}
-							{!product.available && <div className="unavailable-badge">Нет в наличии</div>}
-						</div>
-						<div className={`product-name ${!product.available ? "product-unavailable" : ""}`}>
-							{product.name}
-						</div>
+		<div className={cn("category-products", isLoading && "category-products--loading")}>
+			{isLoading ? (
+				<LoadingSpinner message="Загрузка товаров..." />
+			) : (
+				<>
+					<div className="category-products__filters">
+						<button
+							className={`filter-tag ${activeFilter === "all" ? "active" : ""}`}
+							onClick={() => setActiveFilter("all")}
+						>
+							Все
+						</button>
+						{availableTags.map((tag) => (
+							<button
+								key={tag}
+								className={`filter-tag ${activeFilter === tag ? "active" : ""}`}
+								onClick={() => setActiveFilter(tag)}
+							>
+								{tag}
+							</button>
+						))}
 					</div>
-				))}
-			</div>
-		</>
+
+					<div className="products-grid">
+						{filteredProducts.map((product) => (
+							<div
+								key={product.id}
+								className="product-card"
+								onClick={() => handleProductClick(product.id)}
+							>
+								<div className="product-image">
+									{product.image ? (
+										<img src={product.image} alt={product.name} />
+									) : (
+										<NotFoundImageIcon />
+									)}
+									{!product.available && <span className="unavailable-badge">Нет в наличии</span>}
+								</div>
+								<span className={`product-name ${!product.available ? "product-unavailable" : ""}`}>
+									{product.name}
+								</span>
+							</div>
+						))}
+					</div>
+				</>
+			)}
+		</div>
 	);
 };
 

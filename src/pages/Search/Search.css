@@ -33,7 +33,7 @@
 }
 
 .search-results__item:hover {
-	background-color: var(--gray-light);
+	background-color: var(--gray-lighter);
 }
 
 .search-results__item-img {
