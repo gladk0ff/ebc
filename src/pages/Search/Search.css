@@ -32,7 +32,7 @@
 	cursor: pointer;
 }
 
-.search-results__item:hover {
+.search-results__item:not(.search-results--item-empty):hover {
 	background-color: var(--gray-lighter);
 }
 
@@ -46,6 +46,7 @@
 	flex-direction: column;
 	gap: 16px;
 	color: var(--gray);
+	cursor: default;
 }
 
 .item-empty-text {
