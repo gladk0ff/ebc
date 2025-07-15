@@ -1,11 +1,12 @@
 import cn from "classnames";
 import "./Button.css";
 
-interface IProps {
+interface IProps extends React.HTMLAttributes<HTMLButtonElement> {
 	type?: "primary" | "outline";
 	onClick?: () => void;
 	size?: "medium" | "large";
 	className?: string;
+	ref?: React.RefObject<HTMLButtonElement | null>;
 }
 
 export const Button: React.FC<React.PropsWithChildren<IProps>> = ({
@@ -14,9 +15,12 @@ export const Button: React.FC<React.PropsWithChildren<IProps>> = ({
 	onClick,
 	children,
 	className,
+	ref,
+	...rest
 }) => {
 	return (
 		<button
+			ref={ref}
 			className={cn(
 				"button",
 				{
@@ -28,6 +32,7 @@ export const Button: React.FC<React.PropsWithChildren<IProps>> = ({
 				className || ""
 			)}
 			onClick={onClick}
+			{...rest}
 		>
 			{children}
 		</button>

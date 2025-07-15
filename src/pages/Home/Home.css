@@ -34,3 +34,8 @@
 	padding: 16px 20px;
 	color: var(--gray);
 }
+
+.home_install-button {
+	position: absolute;
+	top: 20px;
+}
